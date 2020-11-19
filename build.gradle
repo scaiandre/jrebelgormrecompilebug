@@ -21,18 +21,27 @@ configurations {
 
 repositories {
 	mavenCentral()
+	maven { url "https://repo.grails.org/grails/core" }
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.codehaus.groovy:groovy'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+
+	implementation("org.grails:gorm-hibernate5-spring-boot:7.0.4.RELEASE")
+	implementation "org.hibernate:hibernate-core"
+	implementation "org.hibernate:hibernate-ehcache"
+	runtime "com.h2database:h2:1.4.192"
+
+	// for connection pooling
+	runtime "org.apache.tomcat:tomcat-jdbc:8.5.0"
+	runtime "org.apache.tomcat.embed:tomcat-embed-logging-log4j:8.5.0"
 }
 
 test {
