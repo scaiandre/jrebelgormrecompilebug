@@ -13,8 +13,8 @@ class GreetingController {
     @Transactional
     public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         Person person = new Person(
-                firstName: "Doe",
-                lastName: "John",
+                firstName: "John",
+                lastName: "Doe",
         )
         person.save(flush: true)
         model.addAttribute("name", name)
